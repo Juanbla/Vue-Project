@@ -1,17 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <h1>Vue JS</h1>
+    <Car :power="power" :upPower="upPower" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import Car from './components/Car.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Car,
+  },
+  setup() {
+    let power = ref(36);
+
+    const upPower = () => {
+      console.log('Aumentar power...');
+      power.value++;
+    };
+
+    return {
+      power,
+      upPower,
+    };
+  },
+};
 </script>
 
 <style>
